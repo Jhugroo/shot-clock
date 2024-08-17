@@ -42,11 +42,11 @@ export default function Component() {
           Ultimate Pool
         </h1>
         {time === 0 ? <div className="border grid grid-cols-1 gap-4 justify-between">
-          <Button variant="default" className="w-full mt-4" onClick={() => { setTimeRemaining(15); setTime(15) }}> 15 Second Shot Clock </Button>
-          <Button variant="default" className="w-full mt-2" onClick={() => { setTimeRemaining(20); setTime(20) }}> 20 Second Shot Clock </Button>
-          <Button variant="default" className="w-full mt-2" onClick={() => { setTimeRemaining(30); setTime(30) }}> 30 Second Shot Clock </Button>
-          <Button variant="default" className="w-full mt-2" onClick={() => { setTimeRemaining(45); setTime(45) }}> 45 Second Shot Clock </Button>
-          <Button variant="default" className="w-full mb-4 mt-2" onClick={() => { setTimeRemaining(60); setTime(60) }}> 60 Second Shot Clock </Button>
+          <Button className="w-full mt-4" onClick={() => { setTimeRemaining(15); setTime(15) }}> 15 Second Shot Clock </Button>
+          <Button className="w-full mt-2" onClick={() => { setTimeRemaining(20); setTime(20) }}> 20 Second Shot Clock </Button>
+          <Button className="w-full mt-2" onClick={() => { setTimeRemaining(30); setTime(30) }}> 30 Second Shot Clock </Button>
+          <Button className="w-full my-2" onClick={() => { setTimeRemaining(45); setTime(45) }}> 45 Second Shot Clock </Button>
+          <Button className="w-full mb-4" onClick={() => { setTimeRemaining(60); setTime(60) }}> 60 Second Shot Clock </Button>
         </div> : <Counter />}
       </div>
     </div >
