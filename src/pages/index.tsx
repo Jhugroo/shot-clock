@@ -38,7 +38,7 @@ export default function Component() {
   return (
     <div className="flex h-screen">
       <div className="m-auto">
-        <h1 className="text-center text-4xl font-bold tracking-tight sm:text-6xl sm:tracking-tight lg:text-[4rem] xl:text-[6rem] xl:tracking-tight 2xl:text-[6.5rem]">
+        <h1 className="text-center font-bold text-6xl tracking-tight lg:text-[4rem]">
           Ultimate Pool
         </h1>
         {time === 0 ? <div className="border grid grid-cols-1 gap-4 justify-between">
