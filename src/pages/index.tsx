@@ -62,10 +62,10 @@ export default function Component() {
         </Button>
       </div>
       <div className="flex gap-2">
-        <Button variant="secondary" disabled={p1disabled} onClick={() => { if (timeRemaining !== time) { setP1Disabled(true); setTimeRemaining(timeRemaining + 15) } }}>
+        <Button variant="secondary" disabled={p1disabled} onClick={() => { if (timeRemaining !== time) { setP1Disabled(true); setTimeRemaining(timeRemaining + 15 > time ? time : timeRemaining + 15) } }}>
           P1 Ext
         </Button>
-        <Button variant="secondary" disabled={p2disabled} onClick={() => { if (timeRemaining !== time) { setP2Disabled(true); setTimeRemaining(timeRemaining + 15) } }}>
+        <Button variant="secondary" disabled={p2disabled} onClick={() => { if (timeRemaining !== time) { setP2Disabled(true); setTimeRemaining(timeRemaining + 15 > time ? time : timeRemaining + 15) } }}>
           P2 Ext
         </Button>
       </div>
