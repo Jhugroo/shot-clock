@@ -1,11 +1,15 @@
 import { useState, useEffect } from "react"
 import { Button } from "@/components/ui/button"
 import { Progress } from "@/components/ui/progress"
+import useSound from 'use-sound';
 export default function Component() {
   const [timeRemaining, setTimeRemaining] = useState(0)
   const [time, setTime] = useState(0)
   const [isRunning, setIsRunning] = useState(false)
   const [progress, setProgress] = useState(13)
+  const [shortSound] = useSound("short.mp3");
+  const [longSound] = useSound("long.mp3");
+  const [finishSound] = useSound("finish.mp3");
   useEffect(() => {
     let interval: string | number | NodeJS.Timeout | undefined
     if (isRunning) {
@@ -18,11 +22,27 @@ export default function Component() {
   useEffect(() => {
     if (timeRemaining === 0) {
       setIsRunning(false)
+      setP1Disabled(true)
+      setP2Disabled(true)
+      setTimeRemaining(time)
+    }
+    if (timeRemaining === 10) {
+      longSound()
+    }
+    if (timeRemaining < 4) {
+      if (timeRemaining === 0) {
+        finishSound()
+      } else {
+        shortSound()
+      }
+
     }
     setProgress((timeRemaining / time) * 100)
-  }, [timeRemaining])
+  }, [time, timeRemaining])
   const handleStart = () => {
     setIsRunning(true)
+    setP1Disabled(false)
+    setP2Disabled(false)
   }
   const handlePause = () => {
     setIsRunning(false)
@@ -33,8 +53,8 @@ export default function Component() {
     setP2Disabled(false)
     setIsRunning(false)
   }
-  const [p1disabled, setP1Disabled] = useState(false)
-  const [p2disabled, setP2Disabled] = useState(false)
+  const [p1disabled, setP1Disabled] = useState(true)
+  const [p2disabled, setP2Disabled] = useState(true)
   return (
     <div className="flex h-screen">
       <div className="m-auto">
@@ -64,10 +84,10 @@ export default function Component() {
         </Button>
       </div>
       <div className="flex gap-2">
-        <Button variant="secondary" disabled={p1disabled} onClick={() => { if (timeRemaining !== time) { setP1Disabled(true); setTimeRemaining(timeRemaining + 15 > time ? time : timeRemaining + 15) } }}>
+        <Button variant="secondary" disabled={p1disabled} onClick={() => { if (timeRemaining !== time) { setP1Disabled(true); setTimeRemaining(timeRemaining + 15) } }}>
           P1 Ext
         </Button>
-        <Button variant="secondary" disabled={p2disabled} onClick={() => { if (timeRemaining !== time) { setP2Disabled(true); setTimeRemaining(timeRemaining + 15 > time ? time : timeRemaining + 15) } }}>
+        <Button variant="secondary" disabled={p2disabled} onClick={() => { if (timeRemaining !== time) { setP2Disabled(true); setTimeRemaining(timeRemaining + 15) } }}>
           P2 Ext
         </Button>
       </div>
