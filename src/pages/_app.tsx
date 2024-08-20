@@ -6,6 +6,7 @@ import { type AppType } from "next/app";
 import { api } from "@/utils/api";
 
 import "@/styles/globals.css";
+import Head from "next/head";
 
 const MyApp: AppType<{ session: Session | null }> = ({
   Component,
@@ -13,6 +14,12 @@ const MyApp: AppType<{ session: Session | null }> = ({
 }) => {
   return (
     <SessionProvider session={session}>
+      <Head>
+        <title>Shot Clock</title>
+        <meta name="description" content="Ultimate Shot Clock" />
+        <link rel="icon" href="/shot-clock.svg" />
+        <link rel="manifest" href="/manifest.json" />
+      </Head>
       <div className={GeistSans.className}>
         <Component {...pageProps} />
       </div>
